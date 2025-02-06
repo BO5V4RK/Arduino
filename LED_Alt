@@ -1,25 +1,36 @@
-int red = 5;
-int blue = 4;
-int button = 2;
+int blue_Led = 6;
+int red_Led = 7;
+int green_Led = 5;
+int yellow_Led = 8;
 
-void setup() {
-  // put your setup code here, to run once:
+int button_1 = 2;
+int button_2 = 3;
+
+void setup(){
   pinMode(2, INPUT);
-  pinMode(4, OUTPUT);
+  pinMode(3, INPUT);
+
   pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-if(digitalRead(button) == HIGH){
-    digitalWrite(blue, HIGH);
-}
-else(digitalWrite(blue, LOW));
+void loop(){
+  if(digitalRead(2) == HIGH && digitalRead(3) == HIGH){
+      digitalWrite(5, HIGH);
+      delay(500);
+      digitalWrite(5, LOW);
+      digitalWrite(7, HIGH);
+      delay(500);
+      digitalWrite(7, LOW);
+      digitalWrite(6, HIGH);
+      delay(500);
+      digitalWrite(6, LOW);
+      digitalWrite(8, HIGH);
+      delay(500);
+      digitalWrite(8, LOW);
 
-if(digitalRead(button) == LOW){
-    digitalWrite(red, HIGH);
-}
-else(digitalWrite(red, LOW));
-
-
+  }
+  
 }
