@@ -1,36 +1,55 @@
-int blue_Led = 6;
-int red_Led = 7;
 int green_Led = 5;
+int red_Led = 7;
+int blue_Led = 6;
 int yellow_Led = 8;
 
 int button_1 = 2;
 int button_2 = 3;
 
-void setup(){
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
+int pot = A0;
 
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
-  pinMode(7, OUTPUT);
-  pinMode(8, OUTPUT);
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(5, OUTPUT);
+pinMode(6, OUTPUT);
+pinMode(7, OUTPUT);
+pinMode(8, OUTPUT);
+pinMode(2, INPUT);
+pinMode(3, INPUT);
+pinMode(A0, INPUT);
+Serial.begin(9600);
+
 }
 
-void loop(){
-  if(digitalRead(2) == HIGH && digitalRead(3) == HIGH){
-      digitalWrite(5, HIGH);
-      delay(500);
-      digitalWrite(5, LOW);
-      digitalWrite(7, HIGH);
-      delay(500);
-      digitalWrite(7, LOW);
-      digitalWrite(6, HIGH);
-      delay(500);
-      digitalWrite(6, LOW);
-      digitalWrite(8, HIGH);
-      delay(500);
-      digitalWrite(8, LOW);
 
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println(analogRead(A0));
+  delay(1000);
+
+    if(analogRead(A0) >= 250){
+    digitalWrite(green_Led, HIGH);
   }
-  
+    else(digitalWrite(green_Led, LOW));
+    
+
+    if(analogRead(A0) >= 500){
+    digitalWrite(red_Led, HIGH);
+  } 
+    else(digitalWrite(red_Led, LOW));
+    
+    
+    if(analogRead(A0) >= 750){
+    digitalWrite(blue_Led, HIGH);
+  } 
+    else(digitalWrite(blue_Led, LOW));
+    
+    
+    if(analogRead(A0) >= 1000){
+    digitalWrite(yellow_Led, HIGH);
+  } 
+    else(digitalWrite(yellow_Led, LOW));
+
+
 }
